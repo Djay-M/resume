@@ -7,9 +7,19 @@ export const themesConfig = {
   dark: {
     backgroundImage: darkBackGround,
     backgroundColor: `#282c34`,
+    textColor: "white",
   },
   light: {
     backgroundImage: lightBackGround,
     backgroundColor: `#282c34`,
+    textColor: "black",
+  },
+};
+
+export const paragrap = {
+  homePage: {
+    title: `Hey Hi, I'M Dhananjaya`,
+    body: `A Backend focused fullstack Developer building the Services and Web Applications
+    that leads to the success of the overall product`,
   },
 };
