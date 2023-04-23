@@ -11,7 +11,7 @@ export const themesConfig = {
   },
   light: {
     backgroundImage: lightBackGround,
-    backgroundColor: `#282c34`,
+    backgroundColor: `white`,
     textColor: "black",
   },
 };

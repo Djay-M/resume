@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { defaultTheme, themesConfig } from "../config/constants";
 
 function NavBar(props) {
+  const navigate = useNavigate();
   let theme = props.theme ? props.theme : defaultTheme;
   const [state, setState] = useState({
     hoveredOnHomeButton: false,
@@ -12,7 +14,7 @@ function NavBar(props) {
   const textColor = themesConfig[theme].textColor;
   const style = {
     outerDiv: {
-      position: "fixed",
+      position: "sticky",
       display: "flex",
       minHeight: "5vh",
       minWidth: "100%",
@@ -53,13 +55,12 @@ function NavBar(props) {
       border: "0.1px solid transparent",
       borderRadius: "5px",
       cursor: "pointer",
-      transition: "2.9s",
-      transform: "rotateY(360deg)",
     },
   };
 
   const handleOnClick = (event) => {
-    console.log(event.target.id);
+    console.log(event.target.id, event.target.value);
+    navigate(`/${event.target.value}`);
   };
 
   return (
@@ -76,33 +77,35 @@ function NavBar(props) {
       <div className="rightDiv" style={style.rightDiv}>
         <button
           id="homeButton"
+          value="home"
           style={{
             ...style.rightDivButtons,
             transform: `${
-              state.hoveredOnHomeButton ? "scale(1,1)" : "scale(1.5,1.5)"
+              state.hoveredOnHomeButton ? "scale(1.5,1.5)" : "scale(1,1)"
             }`,
             transition: `${state.hoveredOnHomeButton ? "0.5s" : "0.5s"}`,
           }}
-          onMouseOut={() => setState({ ...state, hoveredOnHomeButton: true })}
-          onMouseOver={() => setState({ ...state, hoveredOnHomeButton: false })}
+          onMouseOut={() => setState({ ...state, hoveredOnHomeButton: false })}
+          onMouseOver={() => setState({ ...state, hoveredOnHomeButton: true })}
           onClick={(event) => handleOnClick(event)}
         >
           Home
         </button>
         <button
           id="projectsButton"
+          value="projects"
           style={{
             ...style.rightDivButtons,
             transform: `${
-              state.hoveredOnProjectsButton ? "scale(1,1)" : "scale(1.5,1.5)"
+              state.hoveredOnProjectsButton ? "scale(1.5,1.5)" : "scale(1,1)"
             }`,
             transition: `${state.hoveredOnProjectsButton ? "0.5s" : "0.5s"}`,
           }}
           onMouseOut={() =>
-            setState({ ...state, hoveredOnProjectsButton: true })
+            setState({ ...state, hoveredOnProjectsButton: false })
           }
           onMouseOver={() =>
-            setState({ ...state, hoveredOnProjectsButton: false })
+            setState({ ...state, hoveredOnProjectsButton: true })
           }
           onClick={(event) => handleOnClick(event)}
         >
@@ -110,35 +113,35 @@ function NavBar(props) {
         </button>
         <button
           id="aboutButton"
+          value="about"
           style={{
             ...style.rightDivButtons,
             transform: `${
-              state.hoveredOnAboutButton ? "scale(1,1)" : "scale(1.5,1.5)"
+              state.hoveredOnAboutButton ? "scale(1.5,1.5)" : "scale(1,1)"
             }`,
             transition: `${state.hoveredOnAboutButton ? "0.5s" : "0.5s"}`,
           }}
-          onMouseOut={() => setState({ ...state, hoveredOnAboutButton: true })}
-          onMouseOver={() =>
-            setState({ ...state, hoveredOnAboutButton: false })
-          }
+          onMouseOut={() => setState({ ...state, hoveredOnAboutButton: false })}
+          onMouseOver={() => setState({ ...state, hoveredOnAboutButton: true })}
           onClick={(event) => handleOnClick(event)}
         >
           About
         </button>
         <button
           id="contactButton"
+          value="contact"
           style={{
             ...style.rightDivButtons,
             transform: `${
-              state.hoveredOnContactButton ? "scale(1,1)" : "scale(1.5,1.5)"
+              state.hoveredOnContactButton ? "scale(1.5,1.5)" : "scale(1,1)"
             }`,
             transition: `${state.hoveredOnContactButton ? "0.5s" : "0.5s"}`,
           }}
           onMouseOut={() =>
-            setState({ ...state, hoveredOnContactButton: true })
+            setState({ ...state, hoveredOnContactButton: false })
           }
           onMouseOver={() =>
-            setState({ ...state, hoveredOnContactButton: false })
+            setState({ ...state, hoveredOnContactButton: true })
           }
           onClick={(event) => handleOnClick(event)}
         >
