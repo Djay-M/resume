@@ -5,6 +5,8 @@ const { themesConfig, defaultTheme, paragrap } = require("../config/constants");
 
 function Home() {
   let theme = defaultTheme;
+
+  //eslint-disable-next-line
   const [cookies, setCookie] = useCookies([theme]);
   if (cookies.theme && _.includes(Object.keys(themesConfig), cookies.theme)) {
     theme = cookies.theme;
@@ -14,15 +16,14 @@ function Home() {
 
   const style = {
     outerDiv: {
-      position: "fixed",
       display: "flex",
       flexDirection: "column",
     },
     homeDiv: {
       backgroundColor: backgroundColor,
       backgroundImage: `url(${backgroundImage})`,
-      minHeight: "100vh",
-      minWidth: "100vw",
+      height: "95vh",
+      width: "100vw",
       backgroundPosition: "center",
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
@@ -52,8 +53,8 @@ function Home() {
       <NavBar theme={theme} />
       <div className="Home" style={style.homeDiv}>
         <div style={style.paragraphDiv}>
-          <p style={style.paragraphTitleDiv}>{paragrap.homePage.title}</p>
-          <span style={style.paragraphBodyDiv}>{paragrap.homePage.body}</span>
+          <p style={style.paragraphTitleDiv}>{paragrap.home.title}</p>
+          <span style={style.paragraphBodyDiv}>{paragrap.home.body}</span>
         </div>
       </div>
     </div>

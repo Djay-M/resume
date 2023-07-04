@@ -1,6 +1,7 @@
 import React from "react";
 import { useCookies } from "react-cookie";
 import NavBar from "../components/NavBar";
+import Project from "../components/Project";
 import UnderLine from "../components/UnderLine";
 import {
   defaultTheme,
@@ -12,38 +13,34 @@ const _ = require("lodash");
 
 export default function Projects() {
   let theme = defaultTheme;
-  const { backgroundImage, backgroundColor, textColor } = themesConfig[theme];
 
+  //eslint-disable-next-line
   const [cookies, setCookie] = useCookies([theme]);
   if (cookies.theme && _.includes(Object.keys(themesConfig), cookies.theme)) {
     theme = cookies.theme;
   }
+  const { backgroundImage, backgroundColor, textColor } = themesConfig[theme];
 
   const style = {
     outerDiv: {
-      position: "fixed",
       display: "flex",
       flexDirection: "column",
-    },
-    projectsDiv: {
+      color: textColor,
+      height: "100vh",
+      width: "100vw",
       backgroundColor: backgroundColor,
       backgroundImage: `url(${backgroundImage})`,
-      minHeight: "100vh",
-      minWidth: "100vw",
       backgroundPosition: "center",
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
     },
-    paragraphDiv: {
-      textAlign: "center",
-      marginTop: "6%",
-      color: textColor,
-    },
     paragraphTitleDiv: {
+      textAlign: "center",
+      marginTop: "3%",
+      color: textColor,
       fontSize: "3rem",
       textTransform: "uppercase",
       letterSpacing: "3px",
-      textAlign: "center",
       fontWeight: "800",
     },
     paragraphBodyDiv: {
@@ -53,20 +50,29 @@ export default function Projects() {
       padding: "2px",
       whiteSpace: "pre-line",
     },
+    projectsDiv: {
+      margin: "1.5rem 3.5rem 1rem auto",
+      width: "90%",
+      height: "70%",
+      overflow: "auto",
+    },
   };
+
+  const projects = paragrap.projects.workExperience.map((project) => (
+    <Project projectDetails={project} />
+  ));
 
   return (
     <div className="outerDiv" style={style.outerDiv}>
-      <div className="projetcsDiv" style={style.projectsDiv}>
-        <NavBar theme={theme} />
-        <div style={{ ...style.paragraphDiv, ...style.paragraphTitleDiv }}>
-          {paragrap.projects.title}
-        </div>
-        <UnderLine color={underLineColor} />
-        <div style={style.paragraphBodyDiv}>
-          <span>{paragrap.projects.description}</span>
-        </div>
+      <NavBar theme={theme} />
+      <div style={style.paragraphTitleDiv}>{paragrap.projects.title}</div>
+      <UnderLine color={underLineColor} />
+      <div style={style.paragraphBodyDiv}>
+        <span>{paragrap.projects.description}</span>
       </div>
+
+      {/* Projects */}
+      <div style={style.projectsDiv}>{projects}</div>
     </div>
   );
 }

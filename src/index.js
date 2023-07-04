@@ -5,8 +5,9 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
 import Projects from "./pages/Projects";
+import AboutMe from "./pages/AboutMe";
+import Contact from "./pages/Contact";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,8 +17,8 @@ root.render(
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/about" element={<NotFound />} />
-          <Route path="/contact" element={<NotFound />} />
+          <Route path="/about" element={<AboutMe />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </BrowserRouter>

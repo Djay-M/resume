@@ -3,7 +3,7 @@ import { underLineColor } from "../config/constants";
 
 function UnderLine(props) {
   const style = {
-    marginTop: "1%",
+    marginTop: `${props?.marginTop || "1%"}`,
     width: "30%",
     borderRadius: "50px",
     borderColor: `${props?.color || underLineColor}`,

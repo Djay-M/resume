@@ -15,9 +15,10 @@ function NotFound() {
 
   const style = {
     outerDiv: {
-      position: "fixed",
       display: "flex",
       flexDirection: "column",
+      height: "100vh",
+      width: "100vw",
     },
     homeDiv: {
       backgroundColor: backgroundColor,

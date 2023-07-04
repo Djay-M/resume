@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { defaultTheme, themesConfig } from "../config/constants";
 
@@ -19,7 +19,7 @@ function NavBar(props) {
       minHeight: "5vh",
       minWidth: "100%",
       maxWidht: "100%",
-      backgroundColor: themesConfig[theme].backgroundColor,
+      backgroundColor: themesConfig[theme].navBarBackgroundColor,
       flexDirection: "row",
       justifyContent: "space-between",
     },
@@ -59,7 +59,6 @@ function NavBar(props) {
   };
 
   const handleOnClick = (event) => {
-    console.log(event.target.id, event.target.value);
     navigate(`/${event.target.value}`);
   };
 
