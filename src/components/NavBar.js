@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-scroll";
 import { defaultTheme, themesConfig } from "../config/constants";
+import DownloadIcon from "@mui/icons-material/Download";
 import ResumePDF from "../assets/Dhananjaya_M_CV.pdf";
 import ResumeIcon from "../assets/icons/resume-icon.png";
 
@@ -141,9 +142,7 @@ function NavBar(props) {
           >
             <div className="resumeIcon" style={style.icons.ResumeIcon}>
               <p style={style.rightDivButtons}>Resume</p>
-              {state.hoveredOnResumeIcon && (
-                <img style={style.icons.ResumeIcon} src={ResumeIcon} />
-              )}
+              {state.hoveredOnResumeIcon && <DownloadIcon />}
             </div>
           </button>
         </a>
