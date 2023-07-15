@@ -2,8 +2,7 @@ import { useState } from "react";
 import { Link } from "react-scroll";
 import { defaultTheme, themesConfig } from "../config/constants";
 import DownloadIcon from "@mui/icons-material/Download";
-import ResumePDF from "../assets/Dhananjaya_M_CV.pdf";
-import ResumeIcon from "../assets/icons/resume-icon.png";
+// import ResumePDF from "../assets/Dhananjaya_M_CV.pdf";
 
 function NavBar(props) {
   let theme = props.theme ? props.theme : defaultTheme;
@@ -120,9 +119,10 @@ function NavBar(props) {
         </button>
         <a
           style={style.rightDivButtons}
-          href={ResumePDF}
+          // href={ResumePDF}
           download="Dhananjaya_M_CV"
           target="_blank"
+          rel="noreferrer"
         >
           <button
             className="resumeLink"
