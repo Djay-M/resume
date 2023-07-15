@@ -1,20 +1,22 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-scroll";
 import { defaultTheme, themesConfig } from "../config/constants";
+import ResumePDF from "../assets/Dhananjaya_M_CV.pdf";
+import ResumeIcon from "../assets/icons/resume-icon.png";
 
 function NavBar(props) {
-  const navigate = useNavigate();
   let theme = props.theme ? props.theme : defaultTheme;
   const [state, setState] = useState({
     hoveredOnHomeButton: false,
     hoveredOnProjectsButton: false,
     hoveredOnAboutButton: false,
     hoveredOnContactButton: false,
+    hoveredOnResumeIcon: false,
   });
   const textColor = themesConfig[theme].textColor;
   const style = {
     outerDiv: {
-      position: "sticky",
+      position: "fixed",
       display: "flex",
       minHeight: "5vh",
       minWidth: "100%",
@@ -28,25 +30,30 @@ function NavBar(props) {
       marginLeft: "10%",
     },
     leftDivButtons: {
+      alignItems: "center",
       color: textColor,
     },
     midDiv: {
       display: "flex",
       alignItems: "center",
       width: "50%",
-      justifyContent: "center",
+      justifyContent: "space-between",
     },
     midButton: {
+      margin: "7px",
       color: textColor,
       backgroundColor: "transparent",
-      border: "none",
+      border: "0.1px solid transparent",
+      borderRadius: "5px",
+      cursor: "pointer",
+      fontSize: "18px",
     },
     rightDiv: {
       width: "30%",
-      marginRight: "5%",
+      marginLeft: "5%",
       display: "flex",
       flexDirection: "row",
-      justifyContent: "space-between",
+      justifyContent: "center",
     },
     rightDivButtons: {
       margin: "7px",
@@ -54,12 +61,45 @@ function NavBar(props) {
       backgroundColor: "transparent",
       border: "0.1px solid transparent",
       borderRadius: "5px",
-      cursor: "pointer",
+    },
+    icons: {
+      ResumeIcon: {
+        width: 50,
+        height: 30,
+        borderRadius: "50%",
+        display: "flex",
+        hover: {
+          transform: "scale(1.5,1.5)",
+          transition: "0.5s",
+        },
+      },
     },
   };
 
-  const handleOnClick = (event) => {
-    navigate(`/${event.target.value}`);
+  const fetchLinkButton = (LinkName, linkTo, hoveredOn) => {
+    return (
+      <Link
+        id="homeButton"
+        value="home"
+        style={{
+          ...style.midButton,
+          ...(state[hoveredOn] && {
+            color: "#7843e9",
+          }),
+          transform: `${state[hoveredOn] ? "scale(1.5,1.5)" : "scale(1,1)"}`,
+          transition: `${state[hoveredOn] ? "0.5s" : "0.5s"}`,
+        }}
+        onMouseOut={() => setState({ ...state, [hoveredOn]: false })}
+        onMouseOver={() => setState({ ...state, [hoveredOn]: true })}
+        to={linkTo}
+        spy={true}
+        smooth={true}
+        offset={-10}
+        duration={900}
+      >
+        {LinkName}
+      </Link>
+    );
   };
 
   return (
@@ -68,84 +108,45 @@ function NavBar(props) {
         <p style={style.leftDivButtons}>Dhananajaya M</p>
       </div>
       <div style={style.midDiv}>
-        {/* TODO: ADD a feature change theme */}
-        {/* <button id="themeButton" style={style.midButton}>
-          theme
-        </button> */}
+        {fetchLinkButton("Home", "home", "hoveredOnHomeButton")}
+        {fetchLinkButton("Projects", "projects", "hoveredOnProjectsButton")}
+        {fetchLinkButton("About", "about", "hoveredOnAboutButton")}
+        {fetchLinkButton("Contact", "contact", "hoveredOnContactButton")}
       </div>
       <div className="rightDiv" style={style.rightDiv}>
-        <button
-          id="homeButton"
-          value="home"
-          style={{
-            ...style.rightDivButtons,
-            transform: `${
-              state.hoveredOnHomeButton ? "scale(1.5,1.5)" : "scale(1,1)"
-            }`,
-            transition: `${state.hoveredOnHomeButton ? "0.5s" : "0.5s"}`,
-          }}
-          onMouseOut={() => setState({ ...state, hoveredOnHomeButton: false })}
-          onMouseOver={() => setState({ ...state, hoveredOnHomeButton: true })}
-          onClick={(event) => handleOnClick(event)}
-        >
-          Home
+        <button id="themeButton" style={style.rightDivButtons}>
+          Theme
         </button>
-        <button
-          id="projectsButton"
-          value="projects"
-          style={{
-            ...style.rightDivButtons,
-            transform: `${
-              state.hoveredOnProjectsButton ? "scale(1.5,1.5)" : "scale(1,1)"
-            }`,
-            transition: `${state.hoveredOnProjectsButton ? "0.5s" : "0.5s"}`,
-          }}
-          onMouseOut={() =>
-            setState({ ...state, hoveredOnProjectsButton: false })
-          }
-          onMouseOver={() =>
-            setState({ ...state, hoveredOnProjectsButton: true })
-          }
-          onClick={(event) => handleOnClick(event)}
+        <a
+          style={style.rightDivButtons}
+          href={ResumePDF}
+          download="Dhananjaya_M_CV"
+          target="_blank"
         >
-          Projects
-        </button>
-        <button
-          id="aboutButton"
-          value="about"
-          style={{
-            ...style.rightDivButtons,
-            transform: `${
-              state.hoveredOnAboutButton ? "scale(1.5,1.5)" : "scale(1,1)"
-            }`,
-            transition: `${state.hoveredOnAboutButton ? "0.5s" : "0.5s"}`,
-          }}
-          onMouseOut={() => setState({ ...state, hoveredOnAboutButton: false })}
-          onMouseOver={() => setState({ ...state, hoveredOnAboutButton: true })}
-          onClick={(event) => handleOnClick(event)}
-        >
-          About
-        </button>
-        <button
-          id="contactButton"
-          value="contact"
-          style={{
-            ...style.rightDivButtons,
-            transform: `${
-              state.hoveredOnContactButton ? "scale(1.5,1.5)" : "scale(1,1)"
-            }`,
-            transition: `${state.hoveredOnContactButton ? "0.5s" : "0.5s"}`,
-          }}
-          onMouseOut={() =>
-            setState({ ...state, hoveredOnContactButton: false })
-          }
-          onMouseOver={() =>
-            setState({ ...state, hoveredOnContactButton: true })
-          }
-          onClick={(event) => handleOnClick(event)}
-        >
-          Contact
-        </button>
+          <button
+            className="resumeLink"
+            style={{
+              ...style.rightDivButtons,
+              transform: `${
+                state.hoveredOnResumeIcon ? "scale(1.5,1.5)" : "scale(1,1)"
+              }`,
+              transition: `${state.hoveredOnResumeIcon ? "0.5s" : "0.5s"}`,
+            }}
+            onMouseOut={() =>
+              setState({ ...state, hoveredOnResumeIcon: false })
+            }
+            onMouseOver={() =>
+              setState({ ...state, hoveredOnResumeIcon: true })
+            }
+          >
+            <div className="resumeIcon" style={style.icons.ResumeIcon}>
+              <p style={style.rightDivButtons}>Resume</p>
+              {state.hoveredOnResumeIcon && (
+                <img style={style.icons.ResumeIcon} src={ResumeIcon} />
+              )}
+            </div>
+          </button>
+        </a>
       </div>
     </div>
   );

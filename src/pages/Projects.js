@@ -1,6 +1,5 @@
 import React from "react";
 import { useCookies } from "react-cookie";
-import NavBar from "../components/NavBar";
 import Project from "../components/Project";
 import UnderLine from "../components/UnderLine";
 import {
@@ -63,16 +62,18 @@ export default function Projects() {
   ));
 
   return (
-    <div className="outerDiv" style={style.outerDiv}>
-      <NavBar theme={theme} />
-      <div style={style.paragraphTitleDiv}>{paragrap.projects.title}</div>
-      <UnderLine color={underLineColor} />
-      <div style={style.paragraphBodyDiv}>
-        <span>{paragrap.projects.description}</span>
-      </div>
+    <div className="Projects" id="projects">
+      <div className="outerDiv" style={style.outerDiv}>
+        <div style={style.paragraphTitleDiv}>{paragrap.projects.title}</div>
+        <UnderLine color={underLineColor} />
+        <div style={style.paragraphBodyDiv}>
+          <span>{paragrap.projects.description}</span>
+        </div>
 
-      {/* Projects */}
-      <div style={style.projectsDiv}>{projects}</div>
+        {/* Projects */}
+        <div style={style.projectsDiv}>{projects}</div>
+        <UnderLine color={underLineColor} width={"100%"} />
+      </div>
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import React from "react";
 import { CookiesProvider } from "react-cookie";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
@@ -8,20 +7,19 @@ import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import AboutMe from "./pages/AboutMe";
 import Contact from "./pages/Contact";
+import NavBar from "./components/NavBar";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <CookiesProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/about" element={<AboutMe />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Home />} />
-        </Routes>
-      </BrowserRouter>
+      <div>
+        <NavBar />
+        <Home />
+        <AboutMe />
+        <Projects />
+        <Contact />
+      </div>
     </CookiesProvider>
   </React.StrictMode>
 );

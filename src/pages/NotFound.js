@@ -1,5 +1,4 @@
 import { useCookies } from "react-cookie";
-import NavBar from "../components/NavBar";
 const _ = require("lodash");
 const { themesConfig, defaultTheme } = require("../config/constants");
 
@@ -19,9 +18,9 @@ function NotFound() {
       flexDirection: "column",
       height: "100vh",
       width: "100vw",
+      backgroundColor: backgroundColor,
     },
     homeDiv: {
-      backgroundColor: backgroundColor,
       minHeight: "100vh",
       minWidth: "100vw",
       backgroundPosition: "center",
@@ -37,11 +36,12 @@ function NotFound() {
   };
 
   return (
-    <div className="outerDiv" style={style.outerDiv}>
-      <NavBar theme={theme} />
-      <div style={style.homeDiv}>
-        <div style={style.paragraphDiv}>
-          <p style={style.paragraphTitleDiv}>404 Page Not Found</p>
+    <div className="NotFound" id="notFound">
+      <div className="outerDiv" style={style.outerDiv}>
+        <div style={style.homeDiv}>
+          <div style={style.paragraphDiv}>
+            <p style={style.paragraphTitleDiv}>404 Page Not Found</p>
+          </div>
         </div>
       </div>
     </div>

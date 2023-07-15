@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import moment from "moment-timezone";
 import { useCookies } from "react-cookie";
-import NavBar from "../components/NavBar";
 import UnderLine from "../components/UnderLine";
 
 const _ = require("lodash");
@@ -36,9 +35,9 @@ function Contact() {
       display: "flex",
       flexDirection: "column",
       color: textColor,
+      backgroundColor: backgroundColor,
     },
     titleDiv: {
-      backgroundColor: backgroundColor,
       backgroundImage: `url(${backgroundImage})`,
       height: "95vh",
       width: "100vw",
@@ -128,90 +127,94 @@ function Contact() {
   };
 
   return (
-    <div style={style.outerDiv}>
-      <NavBar theme={theme} />
-      <div style={style.titleDiv}>
-        <div style={style.paragraphDiv}>
-          <p style={style.paragraphTitleDiv}>{paragrap.contact.title}</p>
-          <div>
-            <UnderLine color={underLineColor} marginTop={"-2%"} />
+    <div className="Contact" id="contact">
+      <div style={style.outerDiv}>
+        <div style={style.titleDiv}>
+          <div style={style.paragraphDiv}>
+            <p style={style.paragraphTitleDiv}>{paragrap.contact.title}</p>
+            <div>
+              <UnderLine color={underLineColor} marginTop={"-2%"} />
+            </div>
+            <div>
+              <span style={style.paragraphBodyDiv}>
+                {paragrap.contact.body}
+              </span>
+            </div>
           </div>
-          <div>
-            <span style={style.paragraphBodyDiv}>{paragrap.contact.body}</span>
-          </div>
-        </div>
-        <div style={style.form}>
-          {/* Name */}
-          <div className="nameDiv" style={style.formDiv}>
-            <label style={style.formLabel}>Name</label>
-            <input
-              style={style.formInput}
-              placeholder="Enter Your Name"
-              required="true"
-              type="text"
-              id="name"
-              value={formData.name}
-              onChange={handleFormInputChange}
-            ></input>
-          </div>
+          <div style={style.form}>
+            {/* Name */}
+            <div className="nameDiv" style={style.formDiv}>
+              <label style={style.formLabel}>Name</label>
+              <input
+                style={style.formInput}
+                placeholder="Enter Your Name"
+                required="true"
+                type="text"
+                id="name"
+                value={formData.name}
+                onChange={handleFormInputChange}
+              ></input>
+            </div>
 
-          {/* Email */}
-          <div className="emailDiv" style={style.formDiv}>
-            <label style={style.formLabel}>Email</label>
-            <input
-              style={style.formInput}
-              placeholder="Enter Your Email"
-              required="true"
-              type="email"
-              id="email"
-              value={formData.email}
-              onChange={handleFormInputChange}
-            ></input>
-          </div>
+            {/* Email */}
+            <div className="emailDiv" style={style.formDiv}>
+              <label style={style.formLabel}>Email</label>
+              <input
+                style={style.formInput}
+                placeholder="Enter Your Email"
+                required="true"
+                type="email"
+                id="email"
+                value={formData.email}
+                onChange={handleFormInputChange}
+              ></input>
+            </div>
 
-          {/* Message */}
-          <div className="messageDiv" style={style.formDiv}>
-            <label style={style.formLabel}>Message</label>
-            <input
-              style={{
-                ...style.formInput,
-                height: "100px",
-              }}
-              placeholder="Enter Your Message"
-              required="true"
-              id="message"
-              value={formData.message}
-              onChange={handleFormInputChange}
-            ></input>
-          </div>
-
-          {/* submit button */}
-          <input
-            type="hidden"
-            id="createdAt"
-            name="createdAt"
-            value={formData.createdAt}
-          ></input>
-
-          {/* submit button */}
-          <div className="submitDiv" style={style.formDiv}>
-            {linkedInLink && (
-              <a
-                href={linkedInProfile}
-                target="_black"
+            {/* Message */}
+            <div className="messageDiv" style={style.formDiv}>
+              <label style={style.formLabel}>Message</label>
+              <input
                 style={{
-                  ...style.linkedInLink,
-                  margin: "10%",
+                  ...style.formInput,
+                  height: "100px",
                 }}
-              >
-                LinkedIn
-              </a>
-            )}
-            <button style={style.formSubmit} onClick={handleFormSubmit}>
-              submit
-            </button>
+                placeholder="Enter Your Message"
+                required="true"
+                id="message"
+                value={formData.message}
+                onChange={handleFormInputChange}
+              ></input>
+            </div>
+
+            {/* submit button */}
+            <input
+              type="hidden"
+              id="createdAt"
+              name="createdAt"
+              value={formData.createdAt}
+            ></input>
+
+            {/* submit button */}
+            <div className="submitDiv" style={style.formDiv}>
+              {linkedInLink && (
+                <a
+                  href={linkedInProfile}
+                  target="_black"
+                  style={{
+                    ...style.linkedInLink,
+                    margin: "10%",
+                  }}
+                >
+                  LinkedIn
+                </a>
+              )}
+              <button style={style.formSubmit} onClick={handleFormSubmit}>
+                submit
+              </button>
+            </div>
           </div>
         </div>
+        <UnderLine color={underLineColor} width={"100%"} />
       </div>
     </div>
   );

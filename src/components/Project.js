@@ -12,12 +12,15 @@ export default function Project(props) {
       gap: "3rem",
     },
     leftDiv: {
-      width: "100%",
-      height: "20rem",
-      border: "10px solid",
+      width: "30%",
+      height: "12rem",
+      border: "2px solid",
       borderRadius: "10px",
     },
-    right: {},
+    rightDiv: {
+      width: "70%",
+      height: "12rem",
+    },
   };
 
   const detailedDescriptionList = (detailedDescription) =>
@@ -29,8 +32,26 @@ export default function Project(props) {
         <p style={{ fontSize: "30px", textAlign: "center" }}>
           {projectDetails.title}
         </p>
+        {projectDetails.techStact && (
+          <p style={{ fontSize: "15px", margin: "3px" }}>
+            {`Tech Stack Used: `}
+            <i>
+              <b>{projectDetails.techStact.toString()}</b>
+            </i>
+          </p>
+        )}
+        {projectDetails.company && (
+          <p style={{ fontSize: "15px", margin: "3px" }}>
+            {`Company: ${projectDetails.company}`}
+          </p>
+        )}
+        {projectDetails.jobTitle && (
+          <p style={{ fontSize: "15px", margin: "3px" }}>
+            {`Title: ${projectDetails.jobTitle}`}
+          </p>
+        )}
       </div>
-      <div style={style.right}>
+      <div style={style.rightDiv}>
         <p style={{ fontSize: "20px" }}>{projectDetails.description}</p>
         <div>{detailedDescriptionList(projectDetails.detailedDescription)}</div>
       </div>

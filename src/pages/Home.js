@@ -1,7 +1,12 @@
 import { useCookies } from "react-cookie";
-import NavBar from "../components/NavBar";
+import UnderLine from "../components/UnderLine";
 const _ = require("lodash");
-const { themesConfig, defaultTheme, paragrap } = require("../config/constants");
+const {
+  themesConfig,
+  defaultTheme,
+  paragrap,
+  underLineColor,
+} = require("../config/constants");
 
 function Home() {
   let theme = defaultTheme;
@@ -18,9 +23,9 @@ function Home() {
     outerDiv: {
       display: "flex",
       flexDirection: "column",
+      backgroundColor: backgroundColor,
     },
     homeDiv: {
-      backgroundColor: backgroundColor,
       backgroundImage: `url(${backgroundImage})`,
       height: "95vh",
       width: "100vw",
@@ -49,13 +54,15 @@ function Home() {
   };
 
   return (
-    <div className="outerDiv" style={style.outerDiv}>
-      <NavBar theme={theme} />
-      <div className="Home" style={style.homeDiv}>
-        <div style={style.paragraphDiv}>
-          <p style={style.paragraphTitleDiv}>{paragrap.home.title}</p>
-          <span style={style.paragraphBodyDiv}>{paragrap.home.body}</span>
+    <div className="Home" id="home">
+      <div className="outerDiv" style={style.outerDiv}>
+        <div className="Home" style={style.homeDiv}>
+          <div style={style.paragraphDiv}>
+            <p style={style.paragraphTitleDiv}>{paragrap.home.title}</p>
+            <span style={style.paragraphBodyDiv}>{paragrap.home.body}</span>
+          </div>
         </div>
+        <UnderLine color={underLineColor} width={"100%"} />
       </div>
     </div>
   );
