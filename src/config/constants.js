@@ -89,7 +89,7 @@ export const paragrap = {
     title: `Projects`,
     description: `Here you will find some of the work experience projects and personal projects that
     I worked and created.`,
-    workExperience: [
+    workProjects: [
       // oro-corp
       {
         title: `Payment service`,
@@ -182,6 +182,34 @@ export const paragrap = {
         jobTitle: "Software Engineer (SDE-1)",
         company: "Rupeek",
         techStact: ["Node Js", "Mongo"],
+      },
+    ],
+    personalProjects: [
+      {
+        title: `Resume Website`,
+        description: `Desgined and developed a micro-service for managing all the payment related logic and data,
+        like payments(capturing payments from different sources) and payout(transferring money to various accounts)`,
+        detailedDescription: [
+          "Designed a micro-service for managing all the payment related logic and data,",
+          "In case of payments(capturing payments from different sources)",
+          "And in case of payout(transferring money to various accounts).",
+          "Developed a feature for routing customer payments.",
+          "Integrated RazorpayX into company's eco-system.",
+        ],
+        githubLink: "https://github.com/Djay-M/resume",
+        websiteLink: "https://djay-m.github.io/resume/",
+        techStact: ["React Js"],
+      },
+      {
+        title: `TIC TAC TOE`,
+        description: `Desgined and developed a micro-service for managing all the payment related logic and data,
+        like payments(capturing payments from different sources) and payout(transferring money to various accounts)`,
+        detailedDescription: [
+          "Designed a micro-service for managing all the payment related logic and data,",
+        ],
+        githubLink: "https://github.com/Djay-M/games/tree/main/tic_tac_toe",
+        websiteLink: "https://github.com/Djay-M/games/tree/main/tic_tac_toe",
+        techStact: ["React Js"],
       },
     ],
   },

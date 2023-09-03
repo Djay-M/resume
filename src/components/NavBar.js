@@ -114,9 +114,10 @@ function NavBar(props) {
         {fetchLinkButton("Contact", "contact", "hoveredOnContactButton")}
       </div>
       <div className="rightDiv" style={style.rightDiv}>
-        <button id="themeButton" style={style.rightDivButtons}>
+        {/* TODO: */}
+        {/* <button id="themeButton" style={style.rightDivButtons}>
           Theme
-        </button>
+        </button> */}
         <a
           style={style.rightDivButtons}
           href={ResumePDF}
