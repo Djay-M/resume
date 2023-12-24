@@ -38,7 +38,7 @@ export default function Projects() {
       display: "flex",
       flexDirection: "column",
       color: textColor,
-      height: "100vh",
+      height: "95vh",
       width: "100vw",
       backgroundColor: backgroundColor,
       backgroundImage: `url(${backgroundImage})`,
@@ -48,7 +48,7 @@ export default function Projects() {
     },
     paragraphTitleDiv: {
       textAlign: "center",
-      marginTop: "3%",
+      marginTop: "4%",
       color: textColor,
       fontSize: "3rem",
       textTransform: "uppercase",
@@ -180,7 +180,6 @@ export default function Projects() {
             ? projects
             : projects}
         </div>
-        <UnderLine color={underLineColor} width={"100%"} />
       </div>
     </div>
   );

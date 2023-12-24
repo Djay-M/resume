@@ -39,6 +39,7 @@ export default function AboutMe() {
     },
     paragraphDiv: {
       textAlign: "center",
+      marginTop: "4%",
     },
     paragraphTitleDiv: {
       fontSize: "3rem",
@@ -129,7 +130,8 @@ export default function AboutMe() {
     );
   });
 
-  state === {} && setState({ ...state, ...hoveredInitials });
+  // eslint-disable-next-line eqeqeq
+  state == {} && setState({ ...state, ...hoveredInitials });
   return (
     <div className="about" id="about">
       <div className="outerDiv" style={style.outerDiv}>
@@ -137,7 +139,7 @@ export default function AboutMe() {
           <div style={style.paragraphDiv}>
             <p style={style.paragraphTitleDiv}>{paragrap.aboutMe.title}</p>
             <div>
-              <UnderLine color={underLineColor} marginTop={"-2%"} />
+              <UnderLine color={underLineColor} />
             </div>
             <div>
               <span style={style.paragraphBodyDiv}>
@@ -170,7 +172,6 @@ export default function AboutMe() {
             </div>
           </div>
         </div>
-        <UnderLine color={underLineColor} width={"100%"} />
       </div>
     </div>
   );

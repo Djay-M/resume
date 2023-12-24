@@ -47,6 +47,7 @@ function Contact() {
     },
     paragraphDiv: {
       textAlign: "center",
+      marginTop: "2%",
     },
     paragraphTitleDiv: {
       fontSize: "3rem",
@@ -133,7 +134,7 @@ function Contact() {
           <div style={style.paragraphDiv}>
             <p style={style.paragraphTitleDiv}>{paragrap.contact.title}</p>
             <div>
-              <UnderLine color={underLineColor} marginTop={"-2%"} />
+              <UnderLine color={underLineColor} />
             </div>
             <div>
               <span style={style.paragraphBodyDiv}>
@@ -214,7 +215,6 @@ function Contact() {
             </div>
           </div>
         </div>
-        <UnderLine color={underLineColor} width={"100%"} />
       </div>
     </div>
   );
