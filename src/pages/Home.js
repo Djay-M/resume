@@ -1,12 +1,6 @@
 import { useCookies } from "react-cookie";
-import UnderLine from "../components/UnderLine";
 const _ = require("lodash");
-const {
-  themesConfig,
-  defaultTheme,
-  paragrap,
-  underLineColor,
-} = require("../config/constants");
+const { themesConfig, defaultTheme, paragrap } = require("../config/constants");
 
 function Home() {
   let theme = defaultTheme;
@@ -62,7 +56,6 @@ function Home() {
             <span style={style.paragraphBodyDiv}>{paragrap.home.body}</span>
           </div>
         </div>
-        <UnderLine color={underLineColor} width={"100%"} />
       </div>
     </div>
   );

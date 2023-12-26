@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useCookies } from "react-cookie";
 import UnderLine from "../components/UnderLine";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 const _ = require("lodash");
 const {
   themesConfig,
@@ -147,30 +150,38 @@ export default function AboutMe() {
               </span>
             </div>
           </div>
-          <div className="midDiv" style={style.midDiv}>
-            <div style={style.definitionDiv}>
-              <p style={style.definitionPargraph}>
-                {paragrap.aboutMe.definitionPargrap1}
-              </p>
-              <p style={style.definitionPargraph}>
-                {paragrap.aboutMe.definitionPargrap2}
-              </p>
-              <p style={style.definitionPargraph}>
-                {paragrap.aboutMe.definitionPargrap3}
-              </p>
-              <a
-                style={style.definitionDivButton}
-                href={linkedInProfile}
-                target="_black"
-              >
-                LinkedIn Profile
-              </a>
+          <Container style={style.midDiv}>
+            <div className="midDiv">
+              <Row>
+                <Col>
+                  <div style={style.definitionDiv}>
+                    <p style={style.definitionPargraph}>
+                      {paragrap.aboutMe.definitionPargrap1}
+                    </p>
+                    <p style={style.definitionPargraph}>
+                      {paragrap.aboutMe.definitionPargrap2}
+                    </p>
+                    <p style={style.definitionPargraph}>
+                      {paragrap.aboutMe.definitionPargrap3}
+                    </p>
+                    <a
+                      style={style.definitionDivButton}
+                      href={linkedInProfile}
+                      target="_black"
+                    >
+                      LinkedIn Profile
+                    </a>
+                  </div>
+                </Col>
+                <Col>
+                  <div>
+                    <p style={style.mySkills.title}> Tech Stacks</p>
+                    <div style={style.mySkillsDiv}>{mySkillsArray}</div>
+                  </div>
+                </Col>
+              </Row>
             </div>
-            <div>
-              <p style={style.mySkills.title}> Tech Stacks</p>
-              <div style={style.mySkillsDiv}>{mySkillsArray}</div>
-            </div>
-          </div>
+          </Container>
         </div>
       </div>
     </div>

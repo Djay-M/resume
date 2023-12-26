@@ -20,11 +20,10 @@ function NavBar(props) {
   const textColor = themesConfig[theme].textColor;
   const style = {
     outerDiv: {
-      position: "fixed",
       display: "flex",
       minHeight: "8%",
-      minWidth: "100%",
-      maxWidht: "100%",
+      minWidth: "100vw",
+      maxWidht: "100vw",
       backgroundColor: themesConfig[theme].navBarBackgroundColor,
       flexDirection: "row",
       justifyContent: "space-between",
@@ -84,6 +83,7 @@ function NavBar(props) {
       expand="lg"
       className="navbar navbar-expand-lg"
       style={style.outerDiv}
+      sticky="top"
     >
       <Container>
         <Navbar.Brand
