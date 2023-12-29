@@ -6,19 +6,20 @@ export const defaultTheme = "dark";
 export const underLineColor = "#facf0f"; // #7843e9
 export const linkedInProfile =
   "https://www.linkedin.com/in/dhananjaya-mulukaledu/";
+export const githubProfile = "https://github.com/Djay-M";
 
 export const themesConfig = {
   hoverTextColor: "blue",
   dark: {
     backgroundImage: "darkBackGround",
     backgroundColor: `#282c34`,
-    navBarBackgroundColor: `rgba(153,153,153,1)`,
+    navBarBackgroundColor: `#0a192f`, //`rgba(153,153,153,1)`,
     textColor: "white",
   },
   light: {
     backgroundImage: "lightBackGround",
     backgroundColor: `#fff`,
-    navBarBackgroundColor: `rgba(153,153,153,1)`,
+    navBarBackgroundColor: `#0a192f`, //`rgba(153,153,153,1)`,
     textColor: "black",
   },
 };
@@ -26,7 +27,8 @@ export const themesConfig = {
 export const paragrap = {
   home: {
     title: `Hey Hi, I'M Dhananjaya`,
-    body: `A Backend focused fullstack Developer building the Services and Web Applications
+    jobTitle: `A Backend focused fullstack Developer.`,
+    body: `Specializing in developing backend services and Web Applications
     that leads to the success of the overall product`,
   },
   aboutMe: {
