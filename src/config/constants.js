@@ -1,6 +1,8 @@
 // import darkBackGround from "../assets/images/backgroundImages/darkBackGround.jpg";
 // import lightBackGround from "../assets/images/backgroundImages/lightBackGround.jpg";
 
+import { icons } from "../assets/icons";
+
 export const localTimeZone = "Asia/Kolkata";
 export const defaultTheme = "dark";
 export const underLineColor = "#facf0f"; // #7843e9
@@ -42,46 +44,55 @@ export const paragrap = {
     mySkills: [
       {
         name: "Node",
+        imageLink: icons.Node,
         experience: "4 Years",
         level: "Advanced",
       },
       {
         name: "Python",
+        imageLink: icons.Python,
         experience: "4 Years",
         level: "Intermediate",
       },
       {
         name: "Sails JS",
+        imageLink: icons.Sails,
         experience: "4 Years",
         level: "Advanced",
       },
       {
         name: "React JS",
+        imageLink: icons.React,
         experience: "4 Years",
         level: "Beginner",
       },
       {
         name: "AWS",
+        imageLink: icons.AWS,
         experience: "4 Years",
         level: "Intermediate",
       },
       {
         name: "SQL",
+        imageLink: icons.SQL,
         experience: "4 Years",
         level: "Intermediate",
       },
       {
         name: "Postgres",
+        imageLink: icons.Postgres,
         experience: "4 Years",
         level: "Intermediate",
       },
       {
         name: "Mongo",
+        imageLink: icons.Mongo,
         experience: "3 Years",
         level: "Intermediate",
       },
       {
         name: "Hasura",
+        imageLink: icons.Hasura,
         experience: "1 Year",
         level: "Intermediate",
       },

@@ -66,13 +66,12 @@ export default function AboutMe() {
         fontWeight: "500",
       },
       body: {
-        flex: "0 0 15%",
+        flex: "0 0 14%",
         textAlign: "center",
         padding: "1.5rem 0.5rem",
         marginBottom: "6%",
         marginRight: "6%",
         fontWeight: 6,
-        backgroundColor: "rgba(153,153,153,.9)",
         borderRadius: "10px",
       },
     },
@@ -83,11 +82,12 @@ export default function AboutMe() {
     hoveredInitials[`hoveredOn${skill.name}`] = false;
     return (
       <div
-        className="hover:scale-125 duration-500 bg-blue-600"
+        className="bg-transparent hover:scale-125 duration-500"
         style={{
           ...style.mySkills.body,
         }}
       >
+        {skill.imageLink && <img src={skill.imageLink} alt=""></img>}
         {skill.name}
       </div>
     );
