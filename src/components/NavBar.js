@@ -71,7 +71,7 @@ function NavBar(props) {
     },
   };
 
-  const fetchLinkButton = (LinkName, linkTo, hoveredOn) => {
+  const fetchLinkButton = (LinkName, linkTo) => {
     return (
       <Link
         className="text-4xl hover:scale-150 duration-300"
@@ -83,7 +83,7 @@ function NavBar(props) {
         to={linkTo}
         spy={true}
         smooth={true}
-        offset={-10}
+        offset={-80}
         duration={900}
       >
         {LinkName}
@@ -104,8 +104,8 @@ function NavBar(props) {
       </div>
       <div className="hidden md:flex justify-between gap-2 items-center mr-20">
         {fetchLinkButton("Home", "home")}
-        {fetchLinkButton("Projects", "projects")}
         {fetchLinkButton("About", "about")}
+        {fetchLinkButton("Projects", "projects")}
         {fetchLinkButton("Contact", "contact")}
       </div>
       <div className="md:hidden z-10" onClick={handleNavbarClick}>
@@ -125,8 +125,8 @@ function NavBar(props) {
         style={style.outerDiv}
       >
         {fetchLinkButton("Home", "home")}
-        {fetchLinkButton("Projects", "projects")}
         {fetchLinkButton("About", "about")}
+        {fetchLinkButton("Projects", "projects")}
         {fetchLinkButton("Contact", "contact")}
         <a
           href={ResumePDF}

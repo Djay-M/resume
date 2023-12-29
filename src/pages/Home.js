@@ -17,7 +17,7 @@ function Home() {
     theme = cookies.theme;
   }
 
-  const { textColor } = themesConfig[theme];
+  const { textColor, backgroundColor } = themesConfig[theme];
 
   const style = {
     paragraphDiv: {
@@ -37,7 +37,11 @@ function Home() {
   };
 
   return (
-    <div className="w-full h-screen bg-[#282c34]" id="home">
+    <div
+      className="w-full h-screen"
+      id="home"
+      style={{ background: backgroundColor }}
+    >
       <div className="max-w-[1000px] mx-auto px-8 flex flex-col justify-center h-full">
         <div style={style.paragraphDiv}>
           <p style={style.paragraphTitleDiv}>{paragrap.home.title}</p>
@@ -45,7 +49,7 @@ function Home() {
           <span style={style.paragraphBodyDiv}>{paragrap.home.body}</span>
         </div>
       </div>
-      <UnderLine color={underLineColor} width={"100%"} />
+      <UnderLine color={underLineColor} />
     </div>
   );
 }

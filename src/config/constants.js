@@ -13,13 +13,13 @@ export const themesConfig = {
   dark: {
     backgroundImage: "darkBackGround",
     backgroundColor: `#282c34`,
-    navBarBackgroundColor: `#0a192f`, //`rgba(153,153,153,1)`,
+    navBarBackgroundColor: `#0a192f`,
     textColor: "white",
   },
   light: {
     backgroundImage: "lightBackGround",
     backgroundColor: `#fff`,
-    navBarBackgroundColor: `#0a192f`, //`rgba(153,153,153,1)`,
+    navBarBackgroundColor: `#0a192f`,
     textColor: "black",
   },
 };
@@ -34,7 +34,7 @@ export const paragrap = {
   aboutMe: {
     title: `About Me`,
     body: `Here you will find more information about me, what I do, and my current skills mostly in terms of programming and technology.`,
-    definitionPargrap1: `A programmer with 4+ years of experience in designing scalable APIs, workflows and managing,
+    definitionPargrap1: `A programmer with 5 years of experience in designing scalable APIs, workflows and managing,
     building micro-services.I love to work with distributed systems and design, restructure them.`,
     definitionPargrap2: `I'm open to Job opportunities where I can contribute, learn and grow.
     If you have a good opportunity that matches my skills and experience then don't hesitate to contact me.`,

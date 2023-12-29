@@ -16,9 +16,9 @@ root.render(
       <div>
         <NavBar />
         <Home />
-        {/* <AboutMe />
-        <Projects />
-        <Contact /> */}
+        <AboutMe />
+        {/* <Projects /> */}
+        {/* <Contact /> */}
       </div>
     </CookiesProvider>
   </React.StrictMode>
