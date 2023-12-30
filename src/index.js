@@ -17,7 +17,7 @@ root.render(
         <NavBar />
         <Home />
         <AboutMe />
-        {/* <Projects /> */}
+        <Projects />
         {/* <Contact /> */}
       </div>
     </CookiesProvider>

@@ -151,6 +151,8 @@ function NavBar(props) {
             <a
               className={`flex justify-between items-center w-full text-${textColor}-300`}
               href={linkedInProfile}
+              target="_blank"
+              rel="noreferrer"
             >
               LinkedIn <FaLinkedin size={30} />
             </a>
@@ -159,6 +161,8 @@ function NavBar(props) {
             <a
               className={`flex justify-between items-center w-full text-${textColor}-300`}
               href={githubProfile}
+              target="_blank"
+              rel="noreferrer"
             >
               Github <FaGithub size={30} />
             </a>
@@ -166,7 +170,9 @@ function NavBar(props) {
           <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-500 bg-[#6fc2b0]">
             <a
               className={`flex justify-between items-center w-full text-${textColor}-300`}
-              href="/"
+              href="https://mail.google.com/mail/u/0/#inbox?compose=new"
+              target="_blank"
+              rel="noreferrer"
             >
               Email <HiOutlineMail size={30} />
             </a>
@@ -175,9 +181,9 @@ function NavBar(props) {
             <a
               className={`flex justify-between items-center w-full text-${textColor}-300`}
               href={ResumePDF}
-              download="Dhananjaya_M_CV"
               target="_blank"
               rel="noreferrer"
+              download="Dhananjaya_M_CV"
             >
               Resume <BsFillPersonLinesFill size={30} />
             </a>

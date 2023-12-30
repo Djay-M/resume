@@ -14,7 +14,7 @@ export const themesConfig = {
   hoverTextColor: "blue",
   dark: {
     backgroundImage: "darkBackGround",
-    backgroundColor: `#282c34`,
+    backgroundColor: `#1A1A1D`, //`#1A1A1D`, //`#282828`, //`#282c34`,
     navBarBackgroundColor: `#0a192f`,
     textColor: "white",
   },
@@ -117,7 +117,7 @@ export const paragrap = {
         ],
         jobTitle: "Senior Software Engineer (SDE-2)",
         company: "Oro Corp",
-        techStact: ["Node Js", "Postgres"],
+        techStack: ["Node Js", "Postgres"],
       },
       {
         title: `Created Workflows`,
@@ -128,7 +128,7 @@ export const paragrap = {
         ],
         jobTitle: "Senior Software Engineer (SDE-2)",
         company: "Oro Corp",
-        techStact: ["Node Js", "Postgres", "Hasura"],
+        techStack: ["Node Js", "Postgres", "Hasura"],
       },
       // Rupeek
       {
@@ -143,7 +143,7 @@ export const paragrap = {
         ],
         jobTitle: "Software Engineer (SDE-1)",
         company: "Rupeek",
-        techStact: ["Node Js", "Postgres", "Mongo", "SNS-SQS", "Zeebe"],
+        techStack: ["Node Js", "Postgres", "Mongo", "SNS-SQS", "Zeebe"],
       },
       {
         title: `Notification Service`,
@@ -155,7 +155,7 @@ export const paragrap = {
         ],
         jobTitle: "Software Engineer (SDE-1)",
         company: "Rupeek",
-        techStact: ["Node Js", "Mongo", "SNS-SQS", "Zeebe"],
+        techStack: ["Node Js", "Mongo", "SNS-SQS", "Zeebe"],
       },
       {
         title: `LenderDataSync service`,
@@ -166,7 +166,7 @@ export const paragrap = {
         ],
         jobTitle: "Software Engineer (SDE-1)",
         company: "Rupeek",
-        techStact: ["Python", "Airflow", "Celery", "Node Js", "SNS-SQS"],
+        techStack: ["Python", "Airflow", "Celery", "Node Js", "SNS-SQS"],
       },
       {
         title: `Customer Info service`,
@@ -176,7 +176,7 @@ export const paragrap = {
         ],
         jobTitle: "Software Engineer (SDE-1)",
         company: "Rupeek",
-        techStact: ["Node Js", "Postgres"],
+        techStack: ["Node Js", "Postgres"],
       },
       {
         title: `Data Builder service`,
@@ -187,7 +187,7 @@ export const paragrap = {
         ],
         jobTitle: "Software Engineer (SDE-1)",
         company: "Rupeek",
-        techStact: ["Python", "Flask", "Redis"],
+        techStack: ["Python", "Flask", "Redis"],
       },
       {
         title: `Sales Manager`,
@@ -197,7 +197,7 @@ export const paragrap = {
         ],
         jobTitle: "Software Engineer (SDE-1)",
         company: "Rupeek",
-        techStact: ["Node Js", "Mongo"],
+        techStack: ["Node Js", "Mongo"],
       },
     ],
     personalProjects: [
@@ -209,7 +209,7 @@ export const paragrap = {
         ],
         githubLink: "https://github.com/Djay-M/resume",
         websiteLink: "https://djay-m.github.io/resume/",
-        techStact: ["React Js"],
+        techStack: ["React Js"],
       },
       {
         title: `TIC TAC TOE`,
@@ -219,7 +219,7 @@ export const paragrap = {
         ],
         githubLink: "https://github.com/Djay-M/games/tree/main/tic_tac_toe",
         websiteLink: "https://github.com/Djay-M/games/tree/main/tic_tac_toe",
-        techStact: ["React Js"],
+        techStack: ["React Js"],
       },
     ],
   },

@@ -17,7 +17,7 @@ export default function Projects() {
   const constants = {
     workProjectsButtonId: "workProjectsButton",
     personalProjectsButtonId: "personalProjectsButton",
-    boxShadow: "rgba(100,100,111,50) 1px 0px 10px 10px",
+    boxShadow: "rgba(100,100,111,50) 3px 3px 3px 5px",
   };
   const [state, setState] = useState({
     onClickWorkProjectsButton: true,
@@ -38,8 +38,6 @@ export default function Projects() {
       display: "flex",
       flexDirection: "column",
       color: textColor,
-      height: "100vh",
-      width: "100vw",
       backgroundColor: backgroundColor,
       backgroundImage: `url(${backgroundImage})`,
       backgroundPosition: "center",
@@ -48,7 +46,6 @@ export default function Projects() {
     },
     paragraphTitleDiv: {
       textAlign: "center",
-      marginTop: "3%",
       color: textColor,
       fontSize: "3rem",
       textTransform: "uppercase",
@@ -56,28 +53,14 @@ export default function Projects() {
       fontWeight: "800",
     },
     paragraphBodyDiv: {
+      marginTop: "1%",
       color: textColor,
       fontSize: "20px",
       textAlign: "center",
       padding: "2px",
       whiteSpace: "pre-line",
     },
-    projectsNavBar: {
-      display: "flex",
-      gap: "3%",
-      margin: "1.5rem 3.5rem 1rem auto",
-      width: "90%",
-    },
-    projectsDiv: {
-      margin: "1.5rem",
-      width: "90%",
-      height: "60%",
-      overflow: "auto",
-      display: "flex",
-      flexWrap: "wrap",
-      justifyContent: "space-around",
-      gap: "1rem",
-    },
+    projectsDiv: {},
     projectButton: {
       width: "25rem",
       height: "5rem",
@@ -134,53 +117,56 @@ export default function Projects() {
       ));
 
   return (
-    <div className="Projects" id="projects">
-      <div className="outerDiv" style={style.outerDiv}>
-        <div style={style.paragraphTitleDiv}>{paragrap.projects.title}</div>
-        <UnderLine color={underLineColor} />
-        <div style={style.paragraphBodyDiv}>
-          <span>{paragrap.projects.description}</span>
-        </div>
+    <div
+      id="projects"
+      className="w-full h-full sm:h-screen"
+      style={style.outerDiv}
+    >
+      <div style={style.paragraphTitleDiv}>{paragrap.projects.title}</div>
+      <UnderLine color={underLineColor} />
+      <div style={style.paragraphBodyDiv}>
+        <span>{paragrap.projects.description}</span>
+      </div>
 
-        <div className="projectsNavBar" style={style.projectsNavBar}>
-          <div className="workProjectsDiv">
-            <button
-              id={constants.workProjectsButtonId}
-              className={constants.workProjectsButtonId}
-              style={{
-                ...style.projectButton,
-                ...(state.onClickWorkProjectsButton && {
-                  boxShadow: constants.boxShadow,
-                }),
-              }}
-              onClick={handleOnClick}
-            >
-              Work Projects
-            </button>
-          </div>
-          <div className="personalProjectsDiv">
-            <button
-              id={constants.personalProjectsButtonId}
-              className={constants.personalProjectsButtonId}
-              style={{
-                ...style.projectButton,
-                ...(state.onClickPersonalProjectsButton && {
-                  boxShadow: constants.boxShadow,
-                }),
-              }}
-              onClick={handleOnClick}
-            >
-              Personal Projects
-            </button>
-          </div>
+      <div className="grid sm:grid-cols-3 sm:ml-20 gap-10">
+        <div className="workProjectsDiv">
+          <button
+            id={constants.workProjectsButtonId}
+            className={constants.workProjectsButtonId}
+            style={{
+              ...style.projectButton,
+              ...(state.onClickWorkProjectsButton && {
+                boxShadow: constants.boxShadow,
+                textDecorationLine: "underline",
+              }),
+            }}
+            onClick={handleOnClick}
+          >
+            Work Projects
+          </button>
         </div>
+        <div className="personalProjectsDiv">
+          <button
+            id={constants.personalProjectsButtonId}
+            className={constants.personalProjectsButtonId}
+            style={{
+              ...style.projectButton,
+              ...(state.onClickPersonalProjectsButton && {
+                boxShadow: constants.boxShadow,
+                textDecorationLine: "underline",
+              }),
+            }}
+            onClick={handleOnClick}
+          >
+            Personal Projects
+          </button>
+        </div>
+      </div>
 
-        <div className="projectsDiv" style={style.projectsDiv}>
-          {state.projectsToDisplay === constants.workProjectsButtonId
-            ? projects
-            : projects}
-        </div>
-        <UnderLine color={underLineColor} width={"100%"} />
+      <div className="grid overflow-scroll mt-5 sm:ml-20 gap-5">
+        {state.projectsToDisplay === constants.workProjectsButtonId
+          ? projects
+          : projects}
       </div>
     </div>
   );
