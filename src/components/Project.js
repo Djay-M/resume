@@ -1,6 +1,6 @@
 import React from "react";
-import Popover from "@mui/material/Popover";
-import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Collapse from "@mui/material/Collapse";
 
 export default function Project(props) {
   const {
@@ -12,120 +12,106 @@ export default function Project(props) {
   } = props;
 
   const style = {
-    mainDiv: {
-      margin: "1rem",
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "space-between",
-      gap: "3rem",
-    },
     leftDiv: {
-      width: "30%",
-      height: "12rem",
-      border: "2px solid",
       borderRadius: "10px",
-      backgroundColor: backgroundColor || "rgba(153,153,153,1)",
+      backgroundColor: backgroundColor || "#29648A", //"rgba(153,153,153,1)",
       color: textColor,
-    },
-    rightDiv: {
-      width: "70%",
-      height: "12rem",
     },
   };
 
-  const detailedDescriptionList = (detailedDescription) => {
+  const detailedDescriptionList = (detailedDescription, techStack) => {
     const bulletsPoints = detailedDescription.map((point) => (
       <li id={`popOverState-${projectDetails.title}`}>{point}</li>
     ));
     return (
       <div id={`popOverState-${projectDetails.title}`}>
         <p>{projectDetails.description}</p>
-        {bulletsPoints}{" "}
-        <button
-          id={`popOverState-${projectDetails.title}`}
-          onClick={onClickFunction}
-        >
-          Close
-        </button>
+        {bulletsPoints}
+        <p className="text-left text-wrap">
+          {`Tech Stack Used: `}
+          <i>
+            <b>{projectDetails.techStack.toString()}</b>
+          </i>
+        </p>
       </div>
     );
   };
 
   return (
-    <div id={projectDetails.title} style={style.leftDiv}>
-      <p style={{ fontSize: "30px", textAlign: "center" }}>
-        {projectDetails.title}
-      </p>
-      {projectDetails.techStact && (
-        <p style={{ fontSize: "15px", margin: "3px" }}>
-          {`Tech Stack Used: `}
-          <i>
-            <b>{projectDetails.techStact.toString()}</b>
-          </i>
+    <button
+      className="w-full flex justify-between items-center hover:scale-95 duration-500"
+      style={style.leftDiv}
+      id={`popOverState-${projectDetails.title}`}
+      onClick={onClickFunction}
+    >
+      <div>
+        <p className="sm:w-10 text-center font-semibold text-lg ml-5 m-3">
+          {projectDetails.title}
         </p>
-      )}
+      </div>
       {projectDetails.company && (
-        <p style={{ fontSize: "15px", margin: "3px" }}>
-          {`Company: ${projectDetails.company}`}
-        </p>
+        <div>
+          <p className="text-center text-wrap">{`Company: ${projectDetails.company}`}</p>
+        </div>
       )}
       {projectDetails.jobTitle && (
-        <p style={{ fontSize: "15px", margin: "3px" }}>
-          {`Title: ${projectDetails.jobTitle}`}
-        </p>
+        <div>
+          <p className="text-left text-wrap ml-3">{`Title: ${projectDetails.jobTitle}`}</p>
+        </div>
       )}
       {projectDetails.githubLink && (
-        <a
-          href={projectDetails.githubLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ fontSize: "15px", margin: "50px" }}
-        >
-          Github
-        </a>
+        <div>
+          <a
+            className="text-left text-wrap ml-3"
+            href={projectDetails.githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Github
+          </a>
+        </div>
       )}
       {projectDetails.websiteLink && (
-        <a
-          href={projectDetails.websiteLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ fontSize: "15px", margin: "50px" }}
-        >
-          Site Link
-        </a>
+        <div>
+          <a
+            className="text-left text-wrap ml-3"
+            href={projectDetails.websiteLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Site Link
+          </a>
+        </div>
       )}
       {onClickFunction && (
-        <div id={`popOverState-${projectDetails.title}`}>
+        <div
+          id={`popOverState-${projectDetails.title}`}
+          className="hidden sm:block text-left text-wrap ml-3"
+        >
           <button
             id={`popOverState-${projectDetails.title}`}
-            aria-describedby="simple-popover"
-            variant="contained"
             onClick={onClickFunction}
           >
             Detailed Description
+            <ExpandMoreIcon />
           </button>
-          <Popover
-            id={`popOverState-${projectDetails.title}`}
-            open={popOverState}
-            anchorEl={"anchorEl"}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "center",
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "center",
-            }}
-          >
-            <Typography
+          <Collapse in={popOverState} timeout="auto" unmountOnExit>
+            <div
               id={`popOverState-${projectDetails.title}`}
-              sx={{ p: 4 }}
+              open={popOverState}
+              onClose={onClickFunction}
+              anchorEl={"anchorEl"}
             >
-              {detailedDescriptionList(projectDetails.detailedDescription)}
-            </Typography>
-          </Popover>
+              <div id={`popOverState-${projectDetails.title}`} sx={{ p: 4 }}>
+                {detailedDescriptionList(
+                  projectDetails.detailedDescription,
+                  projectDetails.techStack
+                )}
+              </div>
+            </div>
+          </Collapse>
         </div>
       )}
-    </div>
+    </button>
   );
 }

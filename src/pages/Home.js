@@ -17,53 +17,39 @@ function Home() {
     theme = cookies.theme;
   }
 
-  const { backgroundImage, backgroundColor, textColor } = themesConfig[theme];
+  const { textColor, backgroundColor } = themesConfig[theme];
 
   const style = {
-    outerDiv: {
-      display: "flex",
-      flexDirection: "column",
-      backgroundColor: backgroundColor,
-    },
-    homeDiv: {
-      backgroundImage: `url(${backgroundImage})`,
-      height: "95vh",
-      width: "100vw",
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "cover",
-    },
     paragraphDiv: {
-      textAlign: "center",
-      marginTop: "20%",
       color: textColor,
     },
     paragraphTitleDiv: {
       fontSize: "3rem",
       textTransform: "uppercase",
       letterSpacing: "3px",
-      textAlign: "center",
       fontWeight: "800",
     },
     paragraphBodyDiv: {
-      fontSize: "20px",
-      textAlign: "center",
+      fontSize: "1rem",
       padding: "2px",
       whiteSpace: "pre-line",
     },
   };
 
   return (
-    <div className="Home" id="home">
-      <div className="outerDiv" style={style.outerDiv}>
-        <div className="Home" style={style.homeDiv}>
-          <div style={style.paragraphDiv}>
-            <p style={style.paragraphTitleDiv}>{paragrap.home.title}</p>
-            <span style={style.paragraphBodyDiv}>{paragrap.home.body}</span>
-          </div>
+    <div
+      className="w-full h-screen"
+      id="home"
+      style={{ background: backgroundColor }}
+    >
+      <div className="max-w-[1000px] mx-auto px-8 flex flex-col justify-center h-full">
+        <div style={style.paragraphDiv}>
+          <p style={style.paragraphTitleDiv}>{paragrap.home.title}</p>
+          <p className="text-4xl text-[#8892b0]">{paragrap.home.jobTitle}</p>
+          <span style={style.paragraphBodyDiv}>{paragrap.home.body}</span>
         </div>
-        <UnderLine color={underLineColor} width={"100%"} />
       </div>
+      <UnderLine color={underLineColor} />
     </div>
   );
 }

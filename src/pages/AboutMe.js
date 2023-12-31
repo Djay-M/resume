@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useCookies } from "react-cookie";
 import UnderLine from "../components/UnderLine";
 const _ = require("lodash");
@@ -7,35 +7,25 @@ const {
   defaultTheme,
   paragrap,
   underLineColor,
-  linkedInProfile,
 } = require("../config/constants");
 
 export default function AboutMe() {
   let theme = defaultTheme;
-  const [state, setState] = useState({});
   //eslint-disable-next-line
   const [cookies, setCookie] = useCookies([theme]);
   if (cookies.theme && _.includes(Object.keys(themesConfig), cookies.theme)) {
     theme = cookies.theme;
   }
 
-  const { hoverTextColor } = themesConfig;
   const { backgroundImage, backgroundColor, textColor } = themesConfig[theme];
 
   const style = {
     outerDiv: {
-      display: "flex",
-      flexDirection: "column",
       color: textColor,
       backgroundColor: backgroundColor,
     },
     aboutMeDiv: {
-      height: "95vh",
-      width: "100vw",
       backgroundImage: `url(${backgroundImage})`,
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "cover",
     },
     paragraphDiv: {
       textAlign: "center",
@@ -61,12 +51,8 @@ export default function AboutMe() {
       textAlign: "centre",
     },
     definitionPargraph: {
-      marginLeft: "5%",
-      marginRight: "10%",
       fontSize: "1.4rem",
-      maxWidth: "60rem",
       lineHeight: "1.7",
-      marginBottom: "1rem",
     },
     mySkillsDiv: {
       display: "flex",
@@ -80,25 +66,14 @@ export default function AboutMe() {
         fontWeight: "500",
       },
       body: {
-        flex: "0 0 15%",
-        height: "5%",
+        flex: "0 0 14%",
         textAlign: "center",
         padding: "1.5rem 0.5rem",
         marginBottom: "6%",
         marginRight: "6%",
         fontWeight: 6,
-        backgroundColor: "rgba(153,153,153,.9)",
         borderRadius: "10px",
       },
-    },
-    definitionDivButton: {
-      fontSize: "1.4rem",
-      textDecoration: "underline",
-      color: "#facf0f",
-      marginLeft: "5%",
-      backgroundColor: "transparent",
-      border: "none",
-      borderRadius: "5px",
     },
   };
 
@@ -107,46 +82,42 @@ export default function AboutMe() {
     hoveredInitials[`hoveredOn${skill.name}`] = false;
     return (
       <div
+        className="bg-transparent hover:scale-125 duration-500"
         style={{
           ...style.mySkills.body,
-          transform: "scale(1,1)",
-          transition: "0.5s",
-          ...(state?.[`hoveredOn${skill.name}`] && {
-            color: hoverTextColor,
-            transform: "scale(1.2,1.2)",
-            transition: "0.5s",
-          }),
         }}
-        onMouseOut={() =>
-          setState({ ...state, [`hoveredOn${skill.name}`]: false })
-        }
-        onMouseOver={() =>
-          setState({ ...state, [`hoveredOn${skill.name}`]: true })
-        }
       >
+        {skill.imageLink && <img src={skill.imageLink} alt=""></img>}
         {skill.name}
       </div>
     );
   });
 
-  state === {} && setState({ ...state, ...hoveredInitials });
+  // eslint-disable-next-line eqeqeq
   return (
-    <div className="about" id="about">
-      <div className="outerDiv" style={style.outerDiv}>
+    <div>
+      <div
+        id="about"
+        className="w-full h-full md:h-screen"
+        style={style.outerDiv}
+      >
         <div className="aboutMe" style={style.aboutMeDiv}>
           <div style={style.paragraphDiv}>
             <p style={style.paragraphTitleDiv}>{paragrap.aboutMe.title}</p>
             <div>
-              <UnderLine color={underLineColor} marginTop={"-2%"} />
+              <UnderLine color={underLineColor} />
             </div>
-            <div>
+            <div className="mt-5">
               <span style={style.paragraphBodyDiv}>
                 {paragrap.aboutMe.body}
               </span>
             </div>
           </div>
-          <div className="midDiv" style={style.midDiv}>
-            <div style={style.definitionDiv}>
+          <div className="w-full grid sm:grid-cols-2 gap-8 px-4 items-center">
+            <div
+              className="sm:text-left mt-10 ml-20"
+              style={style.definitionDiv}
+            >
               <p style={style.definitionPargraph}>
                 {paragrap.aboutMe.definitionPargrap1}
               </p>
@@ -156,22 +127,17 @@ export default function AboutMe() {
               <p style={style.definitionPargraph}>
                 {paragrap.aboutMe.definitionPargrap3}
               </p>
-              <a
-                style={style.definitionDivButton}
-                href={linkedInProfile}
-                target="_black"
-              >
-                LinkedIn Profile
-              </a>
             </div>
-            <div>
-              <p style={style.mySkills.title}> Tech Stacks</p>
+            <div className="mt-10">
+              <p className="m-10" style={style.mySkills.title}>
+                Tech Stacks
+              </p>
               <div style={style.mySkillsDiv}>{mySkillsArray}</div>
             </div>
           </div>
         </div>
-        <UnderLine color={underLineColor} width={"100%"} />
       </div>
+      <UnderLine color={underLineColor} width={"100%"} />
     </div>
   );
 }

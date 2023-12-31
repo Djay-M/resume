@@ -1,29 +1,25 @@
 import { useState } from "react";
 import { Link } from "react-scroll";
-import { defaultTheme, themesConfig } from "../config/constants";
-import DownloadIcon from "@mui/icons-material/Download";
+import {
+  defaultTheme,
+  githubProfile,
+  linkedInProfile,
+  themesConfig,
+} from "../config/constants";
 import ResumePDF from "../assets/Dhananjaya_M_CV.pdf";
+import { FaBars, FaTimes, FaGithub, FaLinkedin } from "react-icons/fa";
+import { HiOutlineMail } from "react-icons/hi";
+import { BsFillPersonLinesFill } from "react-icons/bs";
 
 function NavBar(props) {
   let theme = props.theme ? props.theme : defaultTheme;
   const [state, setState] = useState({
-    hoveredOnHomeButton: false,
-    hoveredOnProjectsButton: false,
-    hoveredOnAboutButton: false,
-    hoveredOnContactButton: false,
-    hoveredOnResumeIcon: false,
+    navbarOpen: false,
   });
   const textColor = themesConfig[theme].textColor;
   const style = {
     outerDiv: {
-      position: "fixed",
-      display: "flex",
-      minHeight: "5vh",
-      minWidth: "100%",
-      maxWidht: "100%",
       backgroundColor: themesConfig[theme].navBarBackgroundColor,
-      flexDirection: "row",
-      justifyContent: "space-between",
     },
     leftDiv: {
       minWidth: "20%",
@@ -56,7 +52,6 @@ function NavBar(props) {
       justifyContent: "center",
     },
     rightDivButtons: {
-      margin: "7px",
       color: textColor,
       backgroundColor: "transparent",
       border: "0.1px solid transparent",
@@ -76,50 +71,65 @@ function NavBar(props) {
     },
   };
 
-  const fetchLinkButton = (LinkName, linkTo, hoveredOn) => {
+  const fetchLinkButton = (LinkName, linkTo, isMobileView) => {
     return (
       <Link
+        className="text-4xl hover:scale-150 duration-300"
         id="homeButton"
         value="home"
         style={{
           ...style.midButton,
-          ...(state[hoveredOn] && {
-            color: "#7843e9",
-          }),
-          transform: `${state[hoveredOn] ? "scale(1.5,1.5)" : "scale(1,1)"}`,
-          transition: `${state[hoveredOn] ? "0.5s" : "0.5s"}`,
         }}
-        onMouseOut={() => setState({ ...state, [hoveredOn]: false })}
-        onMouseOver={() => setState({ ...state, [hoveredOn]: true })}
         to={linkTo}
         spy={true}
         smooth={true}
-        offset={-10}
+        offset={-80}
         duration={900}
+        onClick={isMobileView ? handleNavbarClick : ""}
       >
         {LinkName}
       </Link>
     );
   };
 
+  const handleNavbarClick = () =>
+    setState({ ...state, navbarOpen: !state.navbarOpen });
+
   return (
-    <div className="NavBar" style={style.outerDiv}>
-      <div className="leftDiv" style={style.leftDiv}>
+    <div
+      className="fixed w-full h-[80px] flex justify-between items-center px-4"
+      style={style.outerDiv}
+    >
+      <div className="px-20">
         <p style={style.leftDivButtons}>Dhananajaya M</p>
       </div>
-      <div style={style.midDiv}>
-        {fetchLinkButton("Home", "home", "hoveredOnHomeButton")}
-        {fetchLinkButton("Projects", "projects", "hoveredOnProjectsButton")}
-        {fetchLinkButton("About", "about", "hoveredOnAboutButton")}
-        {fetchLinkButton("Contact", "contact", "hoveredOnContactButton")}
+      <div className="hidden md:flex justify-between gap-2 items-center mr-20">
+        {fetchLinkButton("Home", "home")}
+        {fetchLinkButton("About", "about")}
+        {fetchLinkButton("Projects", "projects")}
+        {fetchLinkButton("Contact", "contact")}
       </div>
-      <div className="rightDiv" style={style.rightDiv}>
-        {/* TODO: */}
-        {/* <button id="themeButton" style={style.rightDivButtons}>
-          Theme
-        </button> */}
+      <div className="md:hidden z-10" onClick={handleNavbarClick}>
+        {!state.navbarOpen ? (
+          <FaBars color={`${textColor}`} />
+        ) : (
+          <FaTimes color={`${textColor}`} />
+        )}
+      </div>
+      {/* Mobile View */}
+      <div
+        className={
+          !state.navbarOpen
+            ? "hidden"
+            : "absolute top-0 left-0 w-full h-screen flex flex-col justify-center items-center"
+        }
+        style={style.outerDiv}
+      >
+        {fetchLinkButton("Home", "home", true)}
+        {fetchLinkButton("About", "about", true)}
+        {fetchLinkButton("Projects", "projects", true)}
+        {fetchLinkButton("Contact", "contact", true)}
         <a
-          style={style.rightDivButtons}
           href={ResumePDF}
           download="Dhananjaya_M_CV"
           target="_blank"
@@ -128,25 +138,58 @@ function NavBar(props) {
           <button
             className="resumeLink"
             style={{
-              ...style.rightDivButtons,
-              transform: `${
-                state.hoveredOnResumeIcon ? "scale(1.5,1.5)" : "scale(1,1)"
-              }`,
-              transition: `${state.hoveredOnResumeIcon ? "0.5s" : "0.5s"}`,
+              ...style.midButton,
             }}
-            onMouseOut={() =>
-              setState({ ...state, hoveredOnResumeIcon: false })
-            }
-            onMouseOver={() =>
-              setState({ ...state, hoveredOnResumeIcon: true })
-            }
           >
-            <div className="resumeIcon" style={style.icons.ResumeIcon}>
-              <p style={style.rightDivButtons}>Resume</p>
-              {state.hoveredOnResumeIcon && <DownloadIcon />}
-            </div>
+            Resume
           </button>
         </a>
+      </div>
+      {/* Social Icons */}
+      <div className=" hidden lg:flex fixed flex-col top-[35%] left-0">
+        <ul>
+          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-500 bg-blue-500">
+            <a
+              className={`flex justify-between items-center w-full text-${textColor}-300`}
+              href={linkedInProfile}
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn <FaLinkedin size={30} />
+            </a>
+          </li>
+          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-500 bg-[#666666]">
+            <a
+              className={`flex justify-between items-center w-full text-${textColor}-300`}
+              href={githubProfile}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Github <FaGithub size={30} />
+            </a>
+          </li>
+          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-500 bg-[#6fc2b0]">
+            <a
+              className={`flex justify-between items-center w-full text-${textColor}-300`}
+              href="https://mail.google.com/mail/u/0/#inbox?compose=new"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Email <HiOutlineMail size={30} />
+            </a>
+          </li>
+          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-500 bg-[#565f69]">
+            <a
+              className={`flex justify-between items-center w-full text-${textColor}-300`}
+              href={ResumePDF}
+              target="_blank"
+              rel="noreferrer"
+              download="Dhananjaya_M_CV"
+            >
+              Resume <BsFillPersonLinesFill size={30} />
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   );

@@ -1,24 +1,29 @@
 // import darkBackGround from "../assets/images/backgroundImages/darkBackGround.jpg";
 // import lightBackGround from "../assets/images/backgroundImages/lightBackGround.jpg";
 
+import { icons } from "../assets/icons";
+
 export const localTimeZone = "Asia/Kolkata";
 export const defaultTheme = "dark";
 export const underLineColor = "#facf0f"; // #7843e9
 export const linkedInProfile =
   "https://www.linkedin.com/in/dhananjaya-mulukaledu/";
+export const githubProfile = "https://github.com/Djay-M";
+export const getformLink =
+  "https://getform.io/f/bab29933-25ed-48df-90ae-e9bdc2ab2f8a";
 
 export const themesConfig = {
   hoverTextColor: "blue",
   dark: {
     backgroundImage: "darkBackGround",
-    backgroundColor: `#282c34`,
-    navBarBackgroundColor: `rgba(153,153,153,1)`,
+    backgroundColor: `#1A1A1D`, //`#1A1A1D`, //`#282828`, //`#282c34`,
+    navBarBackgroundColor: `#0a192f`,
     textColor: "white",
   },
   light: {
     backgroundImage: "lightBackGround",
     backgroundColor: `#fff`,
-    navBarBackgroundColor: `rgba(153,153,153,1)`,
+    navBarBackgroundColor: `#0a192f`,
     textColor: "black",
   },
 };
@@ -26,13 +31,14 @@ export const themesConfig = {
 export const paragrap = {
   home: {
     title: `Hey Hi, I'M Dhananjaya`,
-    body: `A Backend focused fullstack Developer building the Services and Web Applications
+    jobTitle: `A Backend focused fullstack Developer.`,
+    body: `Specializing in developing backend services and Web Applications
     that leads to the success of the overall product`,
   },
   aboutMe: {
     title: `About Me`,
     body: `Here you will find more information about me, what I do, and my current skills mostly in terms of programming and technology.`,
-    definitionPargrap1: `A programmer with 4+ years of experience in designing scalable APIs, workflows and managing,
+    definitionPargrap1: `A programmer with 5 years of experience in designing scalable APIs, workflows and managing,
     building micro-services.I love to work with distributed systems and design, restructure them.`,
     definitionPargrap2: `I'm open to Job opportunities where I can contribute, learn and grow.
     If you have a good opportunity that matches my skills and experience then don't hesitate to contact me.`,
@@ -40,46 +46,55 @@ export const paragrap = {
     mySkills: [
       {
         name: "Node",
+        imageLink: icons.Node,
         experience: "4 Years",
         level: "Advanced",
       },
       {
         name: "Python",
+        imageLink: icons.Python,
         experience: "4 Years",
         level: "Intermediate",
       },
       {
         name: "Sails JS",
+        imageLink: icons.Sails,
         experience: "4 Years",
         level: "Advanced",
       },
       {
         name: "React JS",
+        imageLink: icons.React,
         experience: "4 Years",
         level: "Beginner",
       },
       {
         name: "AWS",
+        imageLink: icons.AWS,
         experience: "4 Years",
         level: "Intermediate",
       },
       {
         name: "SQL",
+        imageLink: icons.SQL,
         experience: "4 Years",
         level: "Intermediate",
       },
       {
         name: "Postgres",
+        imageLink: icons.Postgres,
         experience: "4 Years",
         level: "Intermediate",
       },
       {
         name: "Mongo",
+        imageLink: icons.Mongo,
         experience: "3 Years",
         level: "Intermediate",
       },
       {
         name: "Hasura",
+        imageLink: icons.Hasura,
         experience: "1 Year",
         level: "Intermediate",
       },
@@ -104,7 +119,7 @@ export const paragrap = {
         ],
         jobTitle: "Senior Software Engineer (SDE-2)",
         company: "Oro Corp",
-        techStact: ["Node Js", "Postgres"],
+        techStack: ["Node Js", "Postgres"],
       },
       {
         title: `Created Workflows`,
@@ -115,7 +130,7 @@ export const paragrap = {
         ],
         jobTitle: "Senior Software Engineer (SDE-2)",
         company: "Oro Corp",
-        techStact: ["Node Js", "Postgres", "Hasura"],
+        techStack: ["Node Js", "Postgres", "Hasura"],
       },
       // Rupeek
       {
@@ -130,7 +145,7 @@ export const paragrap = {
         ],
         jobTitle: "Software Engineer (SDE-1)",
         company: "Rupeek",
-        techStact: ["Node Js", "Postgres", "Mongo", "SNS-SQS", "Zeebe"],
+        techStack: ["Node Js", "Postgres", "Mongo", "SNS-SQS", "Zeebe"],
       },
       {
         title: `Notification Service`,
@@ -142,7 +157,7 @@ export const paragrap = {
         ],
         jobTitle: "Software Engineer (SDE-1)",
         company: "Rupeek",
-        techStact: ["Node Js", "Mongo", "SNS-SQS", "Zeebe"],
+        techStack: ["Node Js", "Mongo", "SNS-SQS", "Zeebe"],
       },
       {
         title: `LenderDataSync service`,
@@ -153,7 +168,7 @@ export const paragrap = {
         ],
         jobTitle: "Software Engineer (SDE-1)",
         company: "Rupeek",
-        techStact: ["Python", "Airflow", "Celery", "Node Js", "SNS-SQS"],
+        techStack: ["Python", "Airflow", "Celery", "Node Js", "SNS-SQS"],
       },
       {
         title: `Customer Info service`,
@@ -163,7 +178,7 @@ export const paragrap = {
         ],
         jobTitle: "Software Engineer (SDE-1)",
         company: "Rupeek",
-        techStact: ["Node Js", "Postgres"],
+        techStack: ["Node Js", "Postgres"],
       },
       {
         title: `Data Builder service`,
@@ -174,7 +189,7 @@ export const paragrap = {
         ],
         jobTitle: "Software Engineer (SDE-1)",
         company: "Rupeek",
-        techStact: ["Python", "Flask", "Redis"],
+        techStack: ["Python", "Flask", "Redis"],
       },
       {
         title: `Sales Manager`,
@@ -184,7 +199,7 @@ export const paragrap = {
         ],
         jobTitle: "Software Engineer (SDE-1)",
         company: "Rupeek",
-        techStact: ["Node Js", "Mongo"],
+        techStack: ["Node Js", "Mongo"],
       },
     ],
     personalProjects: [
@@ -196,7 +211,7 @@ export const paragrap = {
         ],
         githubLink: "https://github.com/Djay-M/resume",
         websiteLink: "https://djay-m.github.io/resume/",
-        techStact: ["React Js"],
+        techStack: ["React Js"],
       },
       {
         title: `TIC TAC TOE`,
@@ -206,12 +221,13 @@ export const paragrap = {
         ],
         githubLink: "https://github.com/Djay-M/games/tree/main/tic_tac_toe",
         websiteLink: "https://github.com/Djay-M/games/tree/main/tic_tac_toe",
-        techStact: ["React Js"],
+        techStack: ["React Js"],
       },
     ],
   },
   contact: {
-    title: `Contact `,
-    body: `Feel free to contact me by submitting the form below and I will get back to you as soon as possible.`,
+    title: `Contact Me`,
+    body: `Feel free to contact me by submitting the form below and I will get back to you as soon as possible`,
+    emailDetails: `Or you can send me a mail to dhananjay.m1805@gmail.com`,
   },
 };
