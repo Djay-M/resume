@@ -71,7 +71,7 @@ function NavBar(props) {
     },
   };
 
-  const fetchLinkButton = (LinkName, linkTo) => {
+  const fetchLinkButton = (LinkName, linkTo, isMobileView) => {
     return (
       <Link
         className="text-4xl hover:scale-150 duration-300"
@@ -85,6 +85,7 @@ function NavBar(props) {
         smooth={true}
         offset={-80}
         duration={900}
+        onClick={isMobileView ? handleNavbarClick : ""}
       >
         {LinkName}
       </Link>
@@ -124,10 +125,10 @@ function NavBar(props) {
         }
         style={style.outerDiv}
       >
-        {fetchLinkButton("Home", "home")}
-        {fetchLinkButton("About", "about")}
-        {fetchLinkButton("Projects", "projects")}
-        {fetchLinkButton("Contact", "contact")}
+        {fetchLinkButton("Home", "home", true)}
+        {fetchLinkButton("About", "about", true)}
+        {fetchLinkButton("Projects", "projects", true)}
+        {fetchLinkButton("Contact", "contact", true)}
         <a
           href={ResumePDF}
           download="Dhananjaya_M_CV"
