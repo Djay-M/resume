@@ -18,7 +18,7 @@ root.render(
         <Home />
         <AboutMe />
         <Projects />
-        {/* <Contact /> */}
+        <Contact />
       </div>
     </CookiesProvider>
   </React.StrictMode>

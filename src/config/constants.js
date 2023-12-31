@@ -9,6 +9,8 @@ export const underLineColor = "#facf0f"; // #7843e9
 export const linkedInProfile =
   "https://www.linkedin.com/in/dhananjaya-mulukaledu/";
 export const githubProfile = "https://github.com/Djay-M";
+export const getformLink =
+  "https://getform.io/f/bab29933-25ed-48df-90ae-e9bdc2ab2f8a";
 
 export const themesConfig = {
   hoverTextColor: "blue",
@@ -224,7 +226,8 @@ export const paragrap = {
     ],
   },
   contact: {
-    title: `Contact `,
-    body: `Feel free to contact me by submitting the form below and I will get back to you as soon as possible.`,
+    title: `Contact Me`,
+    body: `Feel free to contact me by submitting the form below and I will get back to you as soon as possible`,
+    emailDetails: `Or you can send me a mail to dhananjay.m1805@gmail.com`,
   },
 };
