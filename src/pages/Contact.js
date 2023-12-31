@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import moment from "moment-timezone";
 import { useCookies } from "react-cookie";
 import UnderLine from "../components/UnderLine";
+import axios from "axios";
 
 const _ = require("lodash");
 const {
@@ -10,6 +11,7 @@ const {
   paragrap,
   underLineColor,
   localTimeZone,
+  getformLink,
 } = require("../config/constants");
 
 function Contact() {
@@ -88,7 +90,18 @@ function Contact() {
     },
   };
 
-  const getform = async (data) => {};
+  const getform = async (data) => {
+    try {
+      await axios.post(
+        getformLink,
+        { data },
+        { headers: { Accept: "application/json" } }
+      );
+      return "success";
+    } catch (error) {
+      console.log("Error while calling the getform api", error);
+    }
+  };
 
   const handleFormInputChange = (event) => {
     const key = event.target.id;
@@ -98,16 +111,18 @@ function Contact() {
     });
   };
   const handleFormSubmit = (event) => {
+    let alertMessage = `Thank you for reaching out, will get back to as soon as possible`;
     if (!formData.name || !formData.email) {
-      let alertMessage = `Please enter your Name, Email`;
+      alertMessage = `Please enter your Name, Email`;
       alert(alertMessage);
     }
     getform(formData);
+    alert(alertMessage);
   };
 
   return (
     <div id="contact">
-      <div className="w-full h-screen" style={style.outerDiv}>
+      <div className="w-full h-full sm:h-screen" style={style.outerDiv}>
         <div>
           <div style={style.titleDiv}>
             <div style={style.paragraphDiv}>
